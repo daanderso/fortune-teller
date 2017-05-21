@@ -2,30 +2,52 @@ import java.util.Scanner;
 
 public class FortuneTellerApp {
 
+	//method to check for Quit
+		public static void checkForQuit(String userInput){
+			if(userInput.equalsIgnoreCase("Quit")){
+				System.exit(0);
+			}
+		}
+	
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
 
-		// Output questions to console---------------------------------------
+		// Output questions to console----
 
 		System.out.println("What is your firstname?");
 		String firstName = input.next();
+		//This method checks to see if the user wants to quit
+		checkForQuit(firstName);
 
 		System.out.println("What is your lastname?");
 		String lastName = input.next();
+		//This method checks to see if the user wants to quit
+		checkForQuit(lastName);
 
 		System.out.println("What is your age?");
-		int userAge = input.nextInt();
+		//int userAge = input.nextInt();
+		String ageString = input.next();
+		//method to check for Quit
+		checkForQuit(ageString);
+		//changing string to integer
+		int userAge = Integer.parseInt(ageString);
 
 		System.out.println("What month were you born 1- 12?");
-		int birthMonth = input.nextInt();
+		//int birthMonth = input.nextInt();
+		String birthMonthString = input.next();
+		//method to check for Quit
+		checkForQuit(birthMonthString);
+		//changing string to integer
+		int birthMonth = Integer.parseInt(birthMonthString);
+		
 
-		// ROYGBIV code block-------------------------------------------------
-
-		System.out
-				.println("What is your favorite ROYGBIV color? If you do not know what ROYGBIV means enter \"Help\".");
+		System.out.println("What is your favorite ROYGBIV color? If you do not know what ROYGBIV means enter \"Help\".");
 		String favColor = input.next();
-
+		//This method checks to see if the user wants to quit
+		checkForQuit(favColor);
+		
+        //If a user input a correct ROYGBIV color do nothing else if they ask for help display color list and ask again
 		if (favColor.equalsIgnoreCase("red") || favColor.equalsIgnoreCase("orange")
 				|| favColor.equalsIgnoreCase("yellow") || favColor.equalsIgnoreCase("green")
 				|| favColor.equalsIgnoreCase("blue") || favColor.equalsIgnoreCase("indigo")
@@ -36,8 +58,7 @@ public class FortuneTellerApp {
 		} else if (favColor.equalsIgnoreCase("help")) {
 			System.out.println("Red\nOrange\nYellow\nGreen\nBlue\nIndigo\nViolet");
 
-			System.out.println(
-					"What is your favorite ROYGBIV color? If you do not know what ROYGBIV means enter \"Help\".");
+			System.out.println("What is your favorite ROYGBIV color? If you do not know what ROYGBIV means enter \"Help\".");
 			favColor = input.next();
 
 			if (favColor.equalsIgnoreCase("red") || favColor.equalsIgnoreCase("orange")
@@ -45,7 +66,7 @@ public class FortuneTellerApp {
 					|| favColor.equalsIgnoreCase("blue") || favColor.equalsIgnoreCase("indigo")
 					|| favColor.equalsIgnoreCase("violet")) {
 
-				// If user inputs a color if statement does nothing
+				// If user inputs correct  color if statement does nothing
 
 			} else if (favColor.equalsIgnoreCase("help")) {
 				System.out.println("Red\nOrange\nYellow\nGreen\nBlue\nIndigo\nViolet");
@@ -54,9 +75,14 @@ public class FortuneTellerApp {
 		}
 
 		System.out.println("How many siblings do you have");
-		int siblingNumber = input.nextInt();
+		//int siblingNumber = input.nextInt();
+		String siblingNumberString = input.next();
+		//method to check for Quit
+		checkForQuit(siblingNumberString);
+		//changing string to integer
+		int siblingNumber = Integer.parseInt(siblingNumberString);
 
-		// user retireAge code block---------------------------------------
+		// user retireAge code block----
 
 		if (userAge % 2 == 0) {
 			// even aged people retire at 62
@@ -66,19 +92,19 @@ public class FortuneTellerApp {
 			userAge = 65 - userAge;
 		}
 
-		// ------Siblings code block-------------------------------------
+		// -Siblings code block----
 		String vacationHome;
 
 		if (siblingNumber < 0){
-			vacationHome = "the swamp";
+			vacationHome = "Fukushima, Japan";
 		}else{
 		
 		switch (siblingNumber) {
 		case 0:
-			vacationHome = "Atlanta, GA";
+			vacationHome = "Negril, Jamaica";
 			break;
 		case 1:
-			vacationHome = "Negril, Jamaica";
+			vacationHome = "Miami, FL";
 			break;
 		case 2:
 			vacationHome = "Los Angeles, CA";
@@ -90,10 +116,11 @@ public class FortuneTellerApp {
 			break;
 		}
 		}
-		// Second ROYGBIV code block-------------------------------------
-
+		
+		//  ROYGBIV transportation code block----
 		String transportation;
-
+        favColor = favColor.toLowerCase();
+        
 		switch (favColor) {
 		case "red":
 			transportation = "BMW";
@@ -102,10 +129,10 @@ public class FortuneTellerApp {
 			transportation = "Porche";
 			break;
 		case "yellow":
-			transportation = "School Bus";
+			transportation = "school bus";
 			break;
 		case "green":
-			transportation = "yachct";
+			transportation = "yacht";
 			break;
 		case "blue":
 			transportation = "bicycle";
@@ -114,33 +141,28 @@ public class FortuneTellerApp {
 			transportation = "hoverboard";
 			break;
 		default:
-			transportation = "Honda";
+			transportation = "jet ski";
 			break;
 
 		}
 
-		//birth month code block------------------------------------------------------
-		String money;
+		//birth month code block----
+		String retirementMoney;
 		
-		if (birthMonth == 1 || birthMonth ==2  || birthMonth == 3 || birthMonth == 4 ){
-			money = "20000.00";
+		if (birthMonth == 1 || birthMonth == 2  || birthMonth == 3 || birthMonth == 4 ){
+			retirementMoney = "20000.00";
 		}else if(birthMonth == 5 || birthMonth ==6  || birthMonth == 7 || birthMonth == 8 ){
-			money = "40000.00";
+			retirementMoney = "40000.00";
 		}else if(birthMonth == 9 || birthMonth ==10  || birthMonth == 11 || birthMonth == 12 ){
-			money = "60000.00";
+			retirementMoney = "60000.00";
 		}else{
-			money = "0.00";
+			retirementMoney = "0.00";
 		}
-			
+					
 		
-		// Test statement-------------------------------------------------
-		System.out.println(firstName + lastName + userAge + birthMonth + favColor + siblingNumber);
-		System.out.println(vacationHome);
-		System.out.println(transportation);
-		System.out.println(money);
-		
-		System.out.println(firstName + " "+ lastName + " will retire in " + userAge + " years with $" + money + " in the bank, a vacation home in " +
-		vacationHome + " and a " + transportation+".");
+		// Console display output
+		System.out.println(firstName + " "+ lastName + " will retire in " + userAge + " years with $" + retirementMoney + " in the bank, a vacation home in " +
+		vacationHome + " and a " + transportation +".");
 		
 		input.close();
 
